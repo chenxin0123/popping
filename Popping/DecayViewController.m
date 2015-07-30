@@ -27,7 +27,7 @@
 }
 
 #pragma mark - POPAnimationDelegate
-
+///每一帧都会调用
 - (void)pop_animationDidApply:(POPDecayAnimation *)anim
 {
     BOOL isDragViewOutsideOfSuperView = !CGRectContainsRect(self.view.frame, self.dragView.frame);

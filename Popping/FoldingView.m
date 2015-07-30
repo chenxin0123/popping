@@ -72,6 +72,7 @@ typedef NS_ENUM(NSInteger, LayerSection) {
     self.backView.image = [image blurredImage];;
     self.backView.alpha = 0.0;
 
+    //阴影
     self.topShadowLayer = [CAGradientLayer layer];
     self.topShadowLayer.frame = self.topView.bounds;
     self.topShadowLayer.colors = @[(id)[UIColor clearColor].CGColor, (id)[UIColor blackColor].CGColor];
@@ -165,6 +166,7 @@ typedef NS_ENUM(NSInteger, LayerSection) {
     }
 }
 
+///抖一抖
 - (void)rotateToOriginWithVelocity:(CGFloat)velocity
 {
     POPSpringAnimation *rotationAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerRotationX];
@@ -195,6 +197,7 @@ typedef NS_ENUM(NSInteger, LayerSection) {
     return NO;
 }
 
+///返回图片上班部分或者下半部分
 - (UIImage *)imageForSection:(LayerSection)section withImage:(UIImage *)image
 {
     CGRect rect = CGRectMake(0.f, 0.f, image.size.width, image.size.height / 2.f);
@@ -209,6 +212,7 @@ typedef NS_ENUM(NSInteger, LayerSection) {
     return imagePart;
 }
 
+///返回mask
 - (CAShapeLayer *)maskForSection:(LayerSection)section withRect:(CGRect)rect
 {
     CAShapeLayer *layerMask = [CAShapeLayer layer];

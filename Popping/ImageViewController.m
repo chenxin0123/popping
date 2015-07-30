@@ -57,10 +57,12 @@ typedef struct {
     [self scaleDownView:imageView];
 }
 
+///暂停所有动画
 - (void)touchDown:(UIControl *)sender {
     [self pauseAllAnimations:YES forLayer:sender.layer];
 }
 
+///移除所有动画 scaleDownView或者scaleUpView
 - (void)touchUpInside:(UIControl *)sender {
     AnimationInfo animationInfo = [self animationInfoForLayer:sender.layer];
     BOOL hasAnimations = sender.layer.pop_animationKeys.count;
@@ -98,6 +100,7 @@ typedef struct {
     }
 }
 
+///居中并放大
 -(void)scaleUpView:(UIView *)view
 {
     POPSpringAnimation *positionAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPosition];
@@ -110,6 +113,7 @@ typedef struct {
     [view.layer pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
 }
 
+///缩小
 - (void)scaleDownView:(UIView *)view
 {
     POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
@@ -118,6 +122,7 @@ typedef struct {
     [view.layer pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
 }
 
+//暂停或者开始所有动画
 - (void)pauseAllAnimations:(BOOL)pause forLayer:(CALayer *)layer
 {
     for (NSString *key in layer.pop_animationKeys) {
@@ -126,6 +131,7 @@ typedef struct {
     }
 }
 
+///scaleAnimation动画的进度信息
 - (AnimationInfo)animationInfoForLayer:(CALayer *)layer
 {
     POPSpringAnimation *animation = [layer pop_animationForKey:@"scaleAnimation"];
